@@ -20,6 +20,9 @@ cypress/mochawesome-report/cypress-combined-report.html
 # Failure Screenshots:
 cypress/screenshots
 
+# Applitools Chrome & Firefox Screenshot:
+cypress/screenshots
+
 Test Script desktop folder : /cypress/e2e/desktop/functional/agoda_search
 Test Script devices folder : /cypress/e2e/devices/functional/agoda_search
 Feature File : /cypress/e2e/desktop/functional
