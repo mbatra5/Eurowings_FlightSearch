@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./",
+      "outDir": "build/dist",
+      "module": "esnext",
+      "target": "es5",
+      "lib": ["es5","es6","es7", "dom","esnext"],
+      "allowJs": true,
+      "moduleResolution": "node",
+      "types": ["cypress","node","cypress-xpath","cypress-cucumber-preprocessor/steps","cypress-mochawesome-reporter","cypress-axe"],  
+    },
+    "include": [".","**/*.ts","./node_modules/cypress","cypress/**/*.ts","cypress/support/index.js","cypress/plugins/index.ts","cy-verify-downloads"]
+  }

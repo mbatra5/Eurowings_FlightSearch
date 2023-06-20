@@ -1,0 +1,12 @@
+{
+    "url":"https://www.agoda.com/en-in/#flights",
+    "originAirport": "CGN",
+    "originAirportName": "Cologne Bonn Airport",
+    "destinationAirport": "BER",
+    "travelDate": "2023-06-24",
+    "selectedflightText": "flights from CGN to BER",
+    "selectedDate": "24 Jun",
+    "nextDate": "25 Jun",
+    "selectedCheckBox": "Eurowings",
+    "notSelectedAirlines": "Lufthansa"
+}

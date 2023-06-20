@@ -1,0 +1,41 @@
+{
+  "name": "eurowings",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "EurowingsTest": "cypress run --browser chrome --headed --spec \"cypress/e2e/desktop/functional/**.feature\" --reporter mochawesome; npm run create:html:report",
+    "delete:reportFolder": "rm -rf mochawesome-report/",
+    "merge:reports": "mochawesome-merge cypress/mochawesome-report/*.json > cypress/mochawesome-report/cypress-combined-report.json",
+    "create:html:report": "npm run merge:reports && marge --reportDir cypress/mochawesome-report cypress-combined-report.json"
+  },
+  "keywords": [
+    "cypress"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@applitools/eyes-cypress": "^3.33.1",
+    "@types/cypress-cucumber-preprocessor": "^4.0.1",
+    "axe-core": "^3.5.6",
+    "cy-verify-downloads": "^0.1.5",
+    "cypress": "^12.14.0",
+    "cypress-axe": "^1.4.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-iframe": "^1.0.1",
+    "cypress-mochawesome-reporter": "^3.4.0",
+    "cypress-xpath": "^2.0.1",
+    "mocha": "^10.2.0",
+    "mochawesome": "^7.1.3",
+    "typescript": "^5.0.3"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "step_definitions": "cypress/e2e/desktop/functional"
+  },
+  "dependencies": {
+    "cypress-real-events": "^1.7.6",
+    "prettier": "^2.8.8",
+    "cypress-commands": "^1.1.0"
+  }
+}
