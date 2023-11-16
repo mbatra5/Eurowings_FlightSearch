@@ -25,4 +25,4 @@ module.exports = (on: (arg0: string, arg1: any) => void, config: { projectRoot: 
   return config;
 }
 
-require("@applitools/eyes-cypress")(module);
+//require("@applitools/eyes-cypress")(module);

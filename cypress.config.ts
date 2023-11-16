@@ -1,7 +1,7 @@
-const { defineConfig } = require("cypress");
+import {defineConfig} from 'cypress'
+import eyesPlugin from '@applitools/eyes-cypress'  
 
-
-module.exports = defineConfig({
+export default eyesPlugin(defineConfig({
 
   "viewportWidth": 1920,
   "viewportHeight": 1080,
@@ -29,4 +29,4 @@ module.exports = defineConfig({
     },
     specPattern:'cypress/e2e/**/*.feature',
   },
-});
+}));

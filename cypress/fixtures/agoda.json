@@ -3,10 +3,10 @@
     "originAirport": "CGN",
     "originAirportName": "Cologne Bonn Airport",
     "destinationAirport": "BER",
-    "travelDate": "2023-06-24",
+    "travelDate": "2023-11-18",
     "selectedflightText": "flights from CGN to BER",
-    "selectedDate": "24 Jun",
-    "nextDate": "25 Jun",
+    "selectedDate": "18 Nov",
+    "nextDate": "19 Nov",
     "selectedCheckBox": "Eurowings",
     "notSelectedAirlines": "Lufthansa"
 }

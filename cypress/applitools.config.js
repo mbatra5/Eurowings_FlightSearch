@@ -1,8 +1,12 @@
 module.exports = {
   testConcurrency: 20,
-  apiKey: "IXBZVqc104rPxdhhf6eIeNkZejw3BJj1tAer6WV7SKMRQ110",
+  serverUrl: 'https://bpeyesapi.applitools.com',
+  apiKey: 'fF4tWx5ppBkUgW1quMq08iaMCl2FBUi054NUI1GMI2k110',
   failCypressOnDiff: false,
-  ignoreDisplacements: true,
   notifyOnCompletion: true,
-  //serverUrl: "https://bpeyesapi.applitools.com/",
-};
+  showLogs: false,
+  waitBeforeCapture: 1000,
+  layoutBreakpoints: true,
+  disableBrowserFetching: true,
+  ignoreDisplacements: true
+}

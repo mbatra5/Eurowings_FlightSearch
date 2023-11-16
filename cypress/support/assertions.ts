@@ -70,10 +70,10 @@ Cypress.Commands.add('isVisible',selector => {
   })
 
   Cypress.Commands.add('shouldIncludeText',(selector,expectedText) => {
-    return cy.get(selector).should("include.text", expectedText)
+    return cy.get(selector).should("include.text", expectedText , {timeout: 10000})
   })
   Cypress.Commands.add("shouldHaveText", (selector,expectedText) => {
-    return cy.get(selector).should("have.text", expectedText);
+    return cy.get(selector).should("have.text", expectedText, {timeout: 10000});
   });
 
 
