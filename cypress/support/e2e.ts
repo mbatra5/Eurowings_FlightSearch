@@ -14,8 +14,9 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import "cypress-axe";
-import '@applitools/eyes-cypress/commands'
+import "cypress-axe"
+import '@percy/cypress'
+import './percyCommands'
 import './assertions'
 import './commands'
 import './iFrameCommands'

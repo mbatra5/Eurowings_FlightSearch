@@ -30,9 +30,10 @@ declare global {
     interface Chainable<Subject> {
       isWithinViewport(selector: any): Chainable<Element>
       matchWidth(arg1: any, arg2: any): void
-      eyes_setup(testName: string, execution_type:string): Chainable<Element>
-      makeScreenshotWithHook(screenShotName: string, scriptHook:any): Chainable<Element>
-      makeScreenshot(screenShotName: string): Chainable<Element>
+      eyesSetup(testName: string, execution_type:string): Chainable<Element>
+      takeScreenshotWithHook(screenShotName: string, scriptHook:any): Chainable<Element>
+      takeScreenshot(screenShotName: string): Chainable<Element>
+      takeScreenshotWithIgnoreRegions(screenShotName: string, regions: any): void
       takeSnapshot(screenShotName: string): Chainable<Element>
       takeScreenshotForRegion(screenShotName: string, selectorName:string): Chainable<Element>
       takeScreenshotForRegionWithHook(screenShotName: string, selectorName:string, scriptHook: any): Chainable<Element>

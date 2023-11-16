@@ -14,15 +14,15 @@
 const browserify = require('@cypress/browserify-preprocessor')
 const cucumber = require('cypress-cucumber-preprocessor').default
 const resolve = require('resolve')
-
+//let percyHealthCheck = require('@percy/cypress/task')
 
 module.exports = (on: (arg0: string, arg1: any) => void, config: { projectRoot: any; }) => {
     const options = {
       ...browserify.defaultOptions,
       typescript: resolve.sync('typescript', { baseDir: config.projectRoot }),
     }
-    on('file:preprocessor', cucumber(options))
+    on('file:preprocessor', cucumber(options));
+   // on("task", percyHealthCheck)
   return config;
 }
 
-require("@applitools/eyes-cypress")(module);

@@ -6,7 +6,7 @@ module.exports = defineConfig({
   "viewportWidth": 1920,
   "viewportHeight": 1080,
   "defaultCommandTimeout": 60000,
-  "video": true,
+  "video": false,
   chromeWebSecurity: false,
   env: {
     environment: "devPub",
