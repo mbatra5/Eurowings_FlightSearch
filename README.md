@@ -17,11 +17,11 @@ cypress/mochawesome-report
 # HTML Report:
 cypress/mochawesome-report/cypress-combined-report.html
 
-# Failure Screenshots:
-cypress/screenshots
+# Command to Run Tests:
 
-# Applitools Chrome & Firefox Screenshot:
-cypress/screenshots
+# Update Percy token:
+$Env:PERCY_TOKEN="{Your Token}"    
+npx percy exec -- cypress run --spec 'cypress/e2e/desktop/functional/agoda_visual.feature'
 
 Test Script desktop folder : /cypress/e2e/desktop/functional/agoda_search
 Test Script devices folder : /cypress/e2e/devices/functional/agoda_search
