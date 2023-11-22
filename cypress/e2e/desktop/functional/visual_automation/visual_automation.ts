@@ -11,14 +11,14 @@ let flightData
 before(function () {
   cy.fixture('agoda.json').then(function (data) {
     flightData = data
-   // cy.eyesSetup(testName,executionType)
-   cy.eyesOpen({
+    cy.eyesSetup(testName,executionType)
+ /*  cy.eyesOpen({
     appName: "Eurowings",
     batchName: testName,
     browser: { width: 800, height: 600 }
-   })
+   }) */
   })
-})
+}) 
 
 Given('I am on the flight status page', () => {
   cy.visit(flightData.url)
@@ -30,4 +30,8 @@ When('I click the close button on advertisement', () => {
 
 And('take the page snapshot', () => {
   cy.takeScreenshot('Flights page')
+})
+
+after(() => {
+  cy.eyesDestroy()
 })
