@@ -1,7 +1,7 @@
 module.exports = {
   testConcurrency: 20,
-  serverUrl: 'https://bpeyes.applitools.com',
-  apiKey: '2UOgAYePA1qayOgieVEisvqvBUTknmOy2BWfI4Ty107js110',
+  serverUrl: 'Applitools server URL',
+  apiKey: 'API key goes here',
   failCypressOnDiff: false,
   notifyOnCompletion: true,
   showLogs: false,
