@@ -38,6 +38,11 @@ Cypress.Commands.add('takeScreenshot', (screenShotName) => {
   cy.percySnapshot(screenShotName)
 })
 
+Cypress.Commands.add('takeScreenshotwithoutScroll', (screenShotName) => {
+ // if (noapplitools === 'True' || noapplitools === true) { cy.wait(500); return undefined }
+  cy.percySnapshot(screenShotName)
+})
+
 /**
  * @method takeSnapshot
  * take screenshot for the visible region

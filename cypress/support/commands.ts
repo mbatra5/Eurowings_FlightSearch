@@ -33,6 +33,7 @@ declare global {
       eyesSetup(testName: string, execution_type:string): Chainable<Element>
       takeScreenshotWithHook(screenShotName: string, scriptHook:any): Chainable<Element>
       takeScreenshot(screenShotName: string): Chainable<Element>
+      takeScreenshotwithoutScroll(screenShotName: string): Chainable<Element>
       takeScreenshotWithIgnoreRegions(screenShotName: string, regions: any): void
       takeSnapshot(screenShotName: string): Chainable<Element>
       takeScreenshotForRegion(screenShotName: string, selectorName:string): Chainable<Element>
