@@ -1,0 +1,8 @@
+{
+    "email" : "vca.uat+USval2sanity04apr@gmail.com",
+    "password" : "Test@1234",
+    "invalidEmail" : "vca.uat+pega09@gmail.com",
+    "invalidPassword" : "Test@1234456",
+    "emptyEmail":" ",
+    "emptyPassword": " "
+}
