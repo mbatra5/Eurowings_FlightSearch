@@ -1,0 +1,13 @@
+{
+    "email" : "pan.uat.akqa+HFus@gmail.com",
+    "password" : "Test12345",
+    "welcomeText" : "Mrs. Anu Test",
+    "url": "us/en/collections/watch-collection.html",
+    "invalidLoginMsg": "SWSE.AUTH.SERVICE.FAILED",
+    "invalidEmail":"Test@gmail.com",
+    "invalidPassword":"Test1234",
+    "recoverPwdUrl":"/recover-password.html",
+    "resetPasswordHeading": "Recover Password",
+    "emailRequiredErrorMessage": "Email is required",
+    "passwordRequiredErrorMessage":"Password is required."
+  }

@@ -12,6 +12,10 @@ class UrlUtils {
       })
     }
   
-    static get
+    static getPanhomePageUrl() {
+      return this.getUrlFromJson(Cypress.env('environment'), 'panhomePage').then((url) =>{
+        cy.visit(url)
+      })
+    }
   }
   export default UrlUtils
