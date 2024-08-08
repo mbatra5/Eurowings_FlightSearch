@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "EurowingsTest": "cypress run --browser chrome --headed --spec \"cypress/e2e/desktop/functional/**.feature\" --reporter mochawesome",
-    "vca": "cypress run --browser chrome --spec \"cypress/e2e/desktop/functional/VCA_Login.feature\" --reporter mochawesome"
+    "vca": "cypress run --browser chrome --spec \"cypress/e2e/desktop/functional/VCA_Login.feature\" --reporter mochawesome",
+    "test": "cypress run --spec \"cypress/e2e/accessibility/**/*.feature\"",
+    "merge-reports": "mochawesome-merge cypress/reports/*.json > cypress/reports/report.json",
+    "generate-report": "marge cypress/reports/report.json -f report -o cypress/reports",
+    "test:report": "npm run test && npm run merge-reports && npm run generate-report"
   },
   "keywords": [
     "cypress"
@@ -18,8 +22,8 @@
     "@types/cypress-cucumber-preprocessor": "^4.0.1",
     "axe-core": "^3.5.6",
     "cy-verify-downloads": "^0.1.5",
-    "cypress": "13.5.1",
-    "cypress-axe": "^1.4.0",
+    "cypress": "^13.5.1",
+    "cypress-axe": "^1.5.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-iframe": "^1.0.1",
     "cypress-mochawesome-reporter": "^3.4.0",

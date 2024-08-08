@@ -24,6 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+import './wcagcommands';
 
 declare global {
   namespace Cypress {
@@ -62,6 +63,16 @@ declare global {
       iframeElementhasText(iFrameselector:string,iframeElement:string, expectedText:string): Chainable<Element>
       iFrameattributeIsPresent(iFrameselector: string, iframeElement: string,attributeName:string, attributeValue: string): Chainable<Element>
       setViewport(deviceType:string):void
+            // New accessibility commands
+            checkA11yAllImpacts(context?: string | null, callback?: (violations: any) => void): Chainable<void>;
+            checkA11yForLocator(locator: string): Chainable<void>;
+            checkA11yExcludeTags(parentLocator: string, excludeChildSelectors: string[]): Chainable<void>;
+            checkA11yBestPractices(context?: string | null): Chainable<void>;
+            setupA11y(options?: any): Chainable<void>;
+            checkA11yExcludeElements(excludeTags: string[]): Chainable<void>;
+            checkA11yP1P2(callback?: (violations: any) => void): Chainable<void>;
+            checkA11yForXPath(xpath: string): Chainable<void>;
+            checkA11yForXPathExcludeTags(xpath: string, excludeTags: string[]): Chainable<void>;
     }
 
     interface JQuery {

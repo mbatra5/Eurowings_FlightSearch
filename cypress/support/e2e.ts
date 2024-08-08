@@ -26,6 +26,7 @@ import 'cypress-real-events/support'
 import 'cypress-xpath'
 import 'cypress-mochawesome-reporter/register'
 import 'cypress-iframe'
+import './wcagcommands';
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
@@ -33,3 +34,16 @@ Cypress.on('uncaught:exception',err => {
     expect((err.message.includes('status')))
       return false
   })
+
+  afterEach(() => {
+    const violations = Cypress.env('a11yViolations');
+    if (violations && violations.length > 0) {
+      cy.wrap(violations).each((violation) => {
+        cy.log(`Accessibility Violation: ${violation.id}`);
+        cy.log(`Impact: ${violation.impact}`);
+        cy.log(`Description: ${violation.description}`);
+        cy.log(`Nodes: ${violation.nodes}`);
+        cy.log(`Guidelines: ${violation.guidelines}`);
+      });
+    }
+  });

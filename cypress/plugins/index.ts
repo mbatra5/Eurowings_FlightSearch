@@ -22,7 +22,19 @@ module.exports = (on: (arg0: string, arg1: any) => void, config: { projectRoot: 
       typescript: resolve.sync('typescript', { baseDir: config.projectRoot }),
     }
     on('file:preprocessor', cucumber(options));
-   // on("task", percyHealthCheck)
+   // Add custom tasks for logging
+  on('task', {
+    log(message) {
+      console.log(message)
+      return null
+    },
+    table(message) {
+      console.table(message)
+      return null
+    },
+    // You can add other tasks here as needed
+  });
+  
   return config;
 }
 

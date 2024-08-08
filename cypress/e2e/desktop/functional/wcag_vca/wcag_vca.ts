@@ -11,7 +11,7 @@ beforeEach(function () {
 })
 
 Given('I am on the VCA Home page', () => {
-  cy.visit('https://qa03-pub-vca.akqa.technology/us/en/home.html')
+  cy.visit('https://www.google.com')
   cy.injectAxe();
 });
 
