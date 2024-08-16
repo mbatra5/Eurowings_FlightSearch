@@ -10,7 +10,7 @@ Cypress.Commands.add('setupA11y', (options: any = {}) => {
   cy.configureAxe({
     runOnly: {
       type: 'tag',
-      values: ['wcag2aa','wcag21aa']
+      values: ['wcag2a','wcag2aa','wcag21aa','wcag21a','best-practice']
     },
     ...options // Allow additional options to be passed in if needed
   });
@@ -28,23 +28,15 @@ Cypress.Commands.add('checkA11yForLocator', (locator: string) => {
   cy.checkA11y(locator, null, terminalLog);
 });
 
-Cypress.Commands.add('checkA11yExcludeTags', (parentLocator: string, excludeChildSelectors: string[]) => {
-  // Perform the accessibility check on the parent element
-  cy.checkA11y(parentLocator, null, (violations) => {
-    // Filter out violations related to excluded child elements
-    const filteredResults = violations.filter((violation) => {
-      // Check if any of the exclusion selectors match the violation node
-      return !excludeChildSelectors.some(selector => {
-        // Convert the violation node to a jQuery object and check if it matches any of the excluded selectors
-        return Cypress.$(selector).is(violation.nodes[0].target[0]);
-      });
-    });
+Cypress.Commands.add('checkA11yExcludeTags', (parentLocator: string, excludeChildSelectors: string[], callback = terminalLog) => {
+  cy.get(parentLocator).then($el => {
+    const parentElement = $el[0];
 
-    // Log the violations using terminalLog
-    terminalLog(filteredResults);
-
-    // Assert that there are no violations left
-    cy.wrap(filteredResults).should('be.empty');
+    // Perform the accessibility check on the parent element with exclusions
+    cy.checkA11y({
+      include: [parentElement],
+      exclude: excludeChildSelectors
+    }, null, callback);
   });
 });
 
@@ -58,29 +50,11 @@ Cypress.Commands.add('checkA11yBestPractices', (context: string | null = null) =
   }, terminalLog);
 });
 
-Cypress.Commands.add('checkA11yExcludeElements', (excludeTags: string[]) => {
-  // Perform the accessibility check on the entire page
-  cy.checkA11y(null, {
-    runOnly: {
-      type: 'tag',
-      values: [] // No specific tags, hence all impacts
-    }
-  }, (violations) => {
-    // Filter out violations related to excluded HTML tags
-    const filteredResults = violations.filter((violation) => {
-      // Check if any of the exclusion tags match the violation node
-      return !excludeTags.some(tag => {
-        // Convert the violation node to a jQuery object and check if it matches any of the excluded tags
-        return Cypress.$(violation.nodes[0].target[0]).is(tag);
-      });
-    });
-
-    // Log the violations using terminalLog
-    terminalLog(filteredResults);
-
-    // Assert that there are no violations left
-    cy.wrap(filteredResults).should('be.empty');
-  });
+Cypress.Commands.add('checkA11yExcludeElements', (excludeTags: string[], callback = terminalLog) => {
+  // Perform the accessibility check on the entire page with exclusions
+  cy.checkA11y({
+    exclude: excludeTags
+  }, null, callback);
 });
 
 // Command to check only P1 and P2 issues
@@ -90,29 +64,38 @@ Cypress.Commands.add('checkA11yP1P2', (callback = terminalLog) => {
   }, callback);
 });
 
-Cypress.Commands.add('checkA11yForXPath', (xpath: string) => {
+Cypress.Commands.add('checkA11yForXPath', (xpath: string, callback = terminalLog) => {
   cy.xpath(xpath).then($el => {
-    cy.checkA11y($el, null, terminalLog);
+    cy.checkA11y($el, null, callback);
   });
 });
 
-Cypress.Commands.add('checkA11yForXPathExcludeTags', (xpath: string, excludeTags: string[]) => {
+Cypress.Commands.add('checkA11yForXPathExcludeTags', (xpath: string, excludeTags: string[], callback = terminalLog) => {
   cy.xpath(xpath).then($el => {
-    cy.checkA11y($el, null, (violations) => {
-      // Filter out violations related to excluded tags
-      const filteredResults = violations.filter((violation) => {
-        // Check if any of the exclusion tags match the violation node
-        return !excludeTags.some(tag => {
-          // Convert the violation node to a jQuery object and check if it matches any of the excluded tags
-          return Cypress.$(violation.nodes[0].target[0]).is(tag);
-        });
-      });
-
-      // Log the violations using terminalLog
-      terminalLog(filteredResults);
-
-      // Assert that there are no violations left
-      cy.wrap(filteredResults).should('be.empty');
-    });
+    // Perform the accessibility check on the element with exclusions
+    cy.checkA11y({
+      include: $el,
+      exclude: excludeTags
+    }, null, callback);
   });
+});
+
+Cypress.Commands.add('checkA11yForRules', (ruleIds: string[], callback = terminalLog) => {
+  cy.checkA11y(null, {
+    runOnly: {
+      type: 'rule',
+      values: ruleIds
+    }
+  }, callback);
+});
+
+Cypress.Commands.add('checkA11yExcludeRules', (ruleIds: string[], callback = terminalLog) => {
+  const rulesConfig = ruleIds.reduce((acc, ruleId) => {
+    acc[ruleId] = { enabled: false };
+    return acc;
+  }, {});
+
+  cy.checkA11y(null, {
+    rules: rulesConfig
+  }, callback);
 });

@@ -73,6 +73,8 @@ declare global {
             checkA11yP1P2(callback?: (violations: any) => void): Chainable<void>;
             checkA11yForXPath(xpath: string): Chainable<void>;
             checkA11yForXPathExcludeTags(xpath: string, excludeTags: string[]): Chainable<void>;
+            checkA11yForRules(ruleIds: string[], callback?: (violations: any) => void): Chainable<void>;
+            checkA11yExcludeRules(ruleIds: string[], callback?: (violations: any) => void): Chainable<void>;
     }
 
     interface JQuery {
